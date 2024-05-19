@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 
 class OnboardScreen extends StatefulWidget {
@@ -61,7 +61,12 @@ class _OnboardScreenState extends State<OnboardScreen> with SingleTickerProvider
     // Navigate to the new screen
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const NewScreen()),
+      PageTransition(
+        type: PageTransitionType.fade,
+        alignment: Alignment.center, // Change transition type here
+        child: const NewScreen(),
+        duration: const Duration(milliseconds: 600),
+      ),
     );
   }
 
@@ -94,10 +99,10 @@ class _OnboardScreenState extends State<OnboardScreen> with SingleTickerProvider
 
                   Positioned(
                     bottom: 50,
-                    right: 50,
+                    left: 120,
                     child: Container(
-                      width: _buttonWidth + 10,
-                      height: 60.0,
+                      width: _buttonWidth + 300,
+                      height: 80.0,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(30.0),
@@ -122,11 +127,11 @@ class _OnboardScreenState extends State<OnboardScreen> with SingleTickerProvider
                               onHorizontalDragUpdate: _onDragUpdate,
                               onHorizontalDragEnd: _onDragEnd,
                               child: Container(
-                                width: 60.0,
-                                height: 60.0,
-                                decoration: const BoxDecoration(
+                                width: 350.0,
+                                height: 80.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
                                   color: Colors.black,
-                                  shape: BoxShape.circle,
                                 ),
                                 child: const Icon(
                                   Icons.arrow_forward,

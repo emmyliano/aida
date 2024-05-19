@@ -39,6 +39,7 @@ dependencies:
   camera: any
   path_provider: any
   http: any
+  page_transition: ^2.0.9
 
 
 dev_dependencies:
