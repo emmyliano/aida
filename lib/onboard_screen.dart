@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class OnboardScreen extends StatefulWidget {
@@ -66,7 +68,6 @@ class _OnboardScreenState extends State<OnboardScreen> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purpleAccent,
       body: ListView(
         children: [
           Column(
@@ -85,23 +86,7 @@ class _OnboardScreenState extends State<OnboardScreen> with SingleTickerProvider
                     left: 650,
                     child: Column(
                       children: [
-                        Text(
-                          'Hi!,',
-                          style: TextStyle(
-                            fontSize: 50, // Large font size
-                            fontWeight: FontWeight.bold, // Bold font weight
-                            color: Colors.white, // White color
-                          ),
-                        ),
-
-                        Text(
-                          "I'm Aida!",
-                          style: TextStyle(
-                            fontSize: 50, // Large font size
-                            fontWeight: FontWeight.bold, // Bold font weight
-                            color: Colors.white, // White color
-                          ),
-                        ),
+                        TextSwitcher(),
                       ],
                     ),
                   ),
@@ -177,6 +162,54 @@ class NewScreen extends StatelessWidget {
       body: const Center(
         child: Text('Welcome to the new screen!'),
       ),
+    );
+  }
+}
+
+class TextSwitcher extends StatefulWidget {
+  const TextSwitcher({super.key});
+
+  @override
+  _TextSwitcherState createState() => _TextSwitcherState();
+}
+
+class _TextSwitcherState extends State<TextSwitcher> {
+  bool _showFirstText = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start a timer to switch the text every few seconds
+    Timer.periodic(const Duration(seconds: 3), (Timer timer) {
+      setState(() {
+        _showFirstText = !_showFirstText;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 500),
+      child: _showFirstText
+          ? const Text(
+              'Hi, I\'m Aida!',
+              key: ValueKey<int>(1),
+              style: TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            )
+          : const Text(
+              'Your virtual chat friend',
+              key: ValueKey<int>(2),
+              style: TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
     );
   }
 }
