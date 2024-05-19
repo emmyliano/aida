@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:aida/homepage.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class OnboardScreen extends StatefulWidget {
 class _OnboardScreenState extends State<OnboardScreen> with SingleTickerProviderStateMixin{
   double _dragPosition = 0.0;
   final double _buttonWidth = 700.0;
+  // ignore: unused_field
   bool _isSwiped = false;
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -64,7 +66,7 @@ class _OnboardScreenState extends State<OnboardScreen> with SingleTickerProvider
       PageTransition(
         type: PageTransitionType.fade,
         alignment: Alignment.center, // Change transition type here
-        child: const NewScreen(),
+        child: const HomePage(),
         duration: const Duration(milliseconds: 600),
       ),
     );
@@ -154,22 +156,6 @@ class _OnboardScreenState extends State<OnboardScreen> with SingleTickerProvider
   }
 }
 
-
-class NewScreen extends StatelessWidget {
-  const NewScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('New Screen'),
-      ),
-      body: const Center(
-        child: Text('Welcome to the new screen!'),
-      ),
-    );
-  }
-}
 
 class TextSwitcher extends StatefulWidget {
   const TextSwitcher({super.key});
