@@ -40,6 +40,9 @@ dependencies:
   path_provider: any
   http: any
   page_transition: ^2.0.9
+  bubble: any
+  intl: any
+  flutter_dialogflow: any
 
 
 dev_dependencies:
