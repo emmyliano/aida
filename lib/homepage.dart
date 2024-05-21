@@ -1,4 +1,6 @@
+import 'package:aida/chat_app.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -119,7 +121,15 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    // Handle send personal info tap
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        alignment: Alignment.center, // Change transition type here
+                        child: const TextChat(),
+                        duration: const Duration(milliseconds: 600),
+                      ),
+                    );
                   },
                   child: _buildBottomContainer(
                     icon: Icons.person,
