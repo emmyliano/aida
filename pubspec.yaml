@@ -45,6 +45,7 @@ dependencies:
   flutter_gemini: any
   image_picker: any
   dash_chat_2: any
+  animated_widgets: any
 
 
 dev_dependencies:
