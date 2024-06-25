@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SelectionScreen extends StatefulWidget {
-  SelectionScreen({Key? key}) : super(key: key);
+  const SelectionScreen({super.key});
 
   @override
   _MyScreenState createState() => _MyScreenState();
@@ -22,6 +22,22 @@ class _MyScreenState extends State<SelectionScreen> {
       ),
     );
   }
+  
+
+  final List<FuzzyContainers> categories = [
+    FuzzyContainers(textData: 'Love', colorData: Colors.purple[100]!, iconData: Icons.favorite),
+    FuzzyContainers(textData: 'Friend', colorData: Colors.amber[100]!, iconData: Icons.people),
+    FuzzyContainers(textData: 'Learn', colorData: Colors.pink[100]!, iconData: Icons.book),
+    const FuzzyContainers(textData: 'Music', colorData: Colors.white, iconData: Icons.music_note),
+    FuzzyContainers(textData: 'Beauty', colorData: Colors.purple[200]!, iconData: Icons.brush),
+    FuzzyContainers(textData: 'Shopping', colorData: Colors.purple[300]!, iconData: Icons.shopping_cart),
+    FuzzyContainers(textData: 'Art', colorData: Colors.amber[200]!, iconData: Icons.palette),
+    FuzzyContainers(textData: 'Fashion', colorData: Colors.pink[200]!, iconData: Icons.style),
+    FuzzyContainers(textData: 'Education', colorData: Colors.purple[400]!, iconData: Icons.school),
+    FuzzyContainers(textData: 'Co', colorData: Colors.amber[300]!, iconData: Icons.coffee),
+    FuzzyContainers(textData: 'Technology', colorData: Colors.purple[500]!, iconData: Icons.computer),
+    const FuzzyContainers(textData: 'Peace', colorData: Colors.white, iconData: Icons.sentiment_satisfied),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +45,7 @@ class _MyScreenState extends State<SelectionScreen> {
       backgroundColor: Colors.blue,
       appBar: AppBar(
         title: const Text('Select Chat Feature'),
-        backgroundColor: Color.fromARGB(255, 237, 244, 245),
+        backgroundColor: const Color.fromARGB(255, 237, 244, 245),
       ),
       body: Column(
         children: [
@@ -59,6 +75,20 @@ class _MyScreenState extends State<SelectionScreen> {
                     _buildAnimatedButton("Voice Chat with AIDA", const Offset(100, 0), () {
                       // Add functionality for Voice Chat with AIDA button if needed
                     }),
+
+                    ListView.builder(
+                      padding: const EdgeInsets.all(16.0),
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        return SizedBox(
+                          height: 200,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: categories[index],
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ],
@@ -81,7 +111,7 @@ class _MyScreenState extends State<SelectionScreen> {
             onPressed: onPressed,
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(16.0),
-              primary: Colors.white,
+              backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -104,3 +134,45 @@ class _MyScreenState extends State<SelectionScreen> {
 }
 
 
+class FuzzyContainers extends StatelessWidget {
+  
+  final String textData;
+  final Color colorData;
+  final IconData iconData;
+
+  const FuzzyContainers({
+    super.key, 
+    required this.textData,
+    required this.colorData,
+    required this.iconData,});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: colorData,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            iconData,
+            color: Colors.black,
+          ),
+
+          const SizedBox(width: 8.0), // white spacing
+          
+          Text(
+            textData,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 18.0,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
