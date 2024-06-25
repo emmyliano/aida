@@ -1,5 +1,5 @@
-import 'package:aida/chat_app.dart';
-import 'package:aida/consts.dart';
+import 'package:aida/All%20Chat%20Features/text_with_aida.dart';
+import 'package:aida/Consts/consts.dart';
 import 'package:aida/onboard_screen.dart';
 import 'package:aida/selection_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SelectionScreen(),
+      home: OnboardScreen(),
     );
   }
 }

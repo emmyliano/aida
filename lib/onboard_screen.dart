@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:aida/homepage.dart';
+import 'package:aida/selection_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 
@@ -66,7 +66,7 @@ class _OnboardScreenState extends State<OnboardScreen> with SingleTickerProvider
       PageTransition(
         type: PageTransitionType.fade,
         alignment: Alignment.center, // Change transition type here
-        child: const HomePage(),
+        child: SelectionScreen(),
         duration: const Duration(milliseconds: 600),
       ),
     );
