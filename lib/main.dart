@@ -1,7 +1,5 @@
-import 'package:aida/All%20Chat%20Features/text_with_aida.dart';
 import 'package:aida/consts.dart';
 import 'package:aida/onboard_screen.dart';
-import 'package:aida/selection_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
